@@ -15,7 +15,7 @@ const ProfileImage = styled.img`
 `
 const ProfileHeader = styled.div`
     margin-top:10px;
-    margin-bottom:10px;
+    margin-bottom:15px;
     display:flex;
     align-items:center;
     justify-content:space-around;
