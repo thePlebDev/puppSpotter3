@@ -1,8 +1,10 @@
 import React,{useRef} from 'react';
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux'
 
 import useClickdetection from '../../../Hooks/useClickDetection'
+import modalAC from '../../../Redux/ActionCreators/ModalAC'
 
 
 const Container =styled.div`
@@ -31,22 +33,31 @@ const Items = styled.h2`
 `
 
 const data =[{name:'Home',route:'/'},
-            {name:'Profile',route:'/profile'},{name:'Login',route:'/login'},{name:'Map',route:'/map'}]
+            {name:'Profile',route:'/profile'},{name:'Map',route:'/map'}]
 
 
-const MobileNavigation =({state,setState})=>{
+const MobileNavigation =({state,setState,showModal})=>{
     const node = useRef()
-    useClickdetection(node,setState)
+    const node2 = useRef()
+    useClickdetection(node,node2,setState)
 
     return(
         <Container state={state} ref={node}>
+            <Items ref={node2} onClick={()=>{showModal()}}>Login</Items>
             {
                 data.map((item,index)=>{
                     return<Link key={index} to={`${item.route}`}><Items >{item.name}</Items></Link>
                 })
             }
+            
         </Container>
     )
 }
 
-export default MobileNavigation
+const mapDispatchToProps={
+    showModal:modalAC.showModal
+}
+
+const ConnectedMobileNavigation =connect(null,mapDispatchToProps)(MobileNavigation)
+
+export default ConnectedMobileNavigation

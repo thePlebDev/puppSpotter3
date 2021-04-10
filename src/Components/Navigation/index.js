@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux'
 
 import PetsIcon from '@material-ui/icons/Pets';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
 
+import modalAC from '../../Redux/ActionCreators/ModalAC'
 
 const Container = styled.div`
 
@@ -50,7 +52,7 @@ const Icon = styled.div`
 
 
 
-const Navigation =({setState,state})=>{
+const Navigation =({setState,state,showModal})=>{
     const handleClick=()=>{
         setState(!state)
     }
@@ -58,7 +60,7 @@ const Navigation =({setState,state})=>{
     return(
         <Container>
             <IconContainer>
-                <CameraAltIcon style={{fontSize:'30px',color:'4a47a3'}}/>
+                <CameraAltIcon style={{fontSize:'30px',color:'4a47a3'}} onClick={()=>{showModal()}}/>
                 <Link to="/">
                     <Title>PupperGram</Title>
                 </Link>
@@ -68,13 +70,13 @@ const Navigation =({setState,state})=>{
                 <Icon>
                     <PetsIcon style={{fontSize:'30px',color:'4a47a3'}} onClick={()=>handleClick()}/>
                 </Icon>
-                <Link to="/login">
-                    <NavLinks>Login</NavLinks>
-                </Link>
-                <Link to="/profile">
+                
+                    <NavLinks onClick={()=>{showModal()}}>Login</NavLinks>
+                
+                <Link to="/profile" >
                     <NavLinks>Profile</NavLinks>
                 </Link>
-                <Link to="/map">
+                <Link to="/map" >
                     <NavLinks>Map</NavLinks>
                 </Link>
             </IconContainer>
@@ -82,4 +84,11 @@ const Navigation =({setState,state})=>{
     )
 }
 
-export default Navigation
+const mapDispatchToProps={
+    showModal:modalAC.showModal
+}
+
+
+const connectedNavigation=connect(null,mapDispatchToProps)(Navigation)
+
+export default connectedNavigation
