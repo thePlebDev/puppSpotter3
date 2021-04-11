@@ -13,6 +13,15 @@ const modalReducer =(state=initialState, action)=>{
         case types.hideModal:
             return{...state,showModal:false}
 
+        case types.showSignup:
+            return{...state,modalContent:types.showSignup}
+        
+        case types.showLogin:
+            return{...state,modalContent:types.showLogin}
+        
+        case types.showPost:
+            return{...state,modalContent:types.showPost}
+
         default:
             return state;
     }

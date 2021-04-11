@@ -13,6 +13,21 @@ const ModalAC =(()=>{
             return{
                 type:types.hideModal
             }
+        },
+        showLogin(){
+            return{
+                type:types.showLogin
+            }
+        },
+        showSignup(){
+            return{
+                type:types.showSignup
+            }
+        },
+        showPost(){
+            return{
+                type:types.showPost
+            }
         }
     }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux'
 
 import Form from '../Form'
 import LoginTextInput from '../Form/LoginTextInput'
@@ -7,6 +8,7 @@ import PasswordInput from '../Form/PasswordInput'
 
 import useFormHook from '../../Hooks/useFormHook'
 import loginValidation from '../../Utils/loginUtil'
+import modalAC from '../../Redux/ActionCreators/ModalAC'
 
 const Container = styled.div`
    
@@ -41,12 +43,13 @@ const SignupLink = styled.span`
     border-bottom:1px solid #4a47a3;
     font-size:13px;
     letter-spacing:1px;
+    cursor: pointer;
 `
 
 
 
 
-const Login =()=>{
+const Login =({showSignup})=>{
     const {state,errors,handleSubmit,handleChange} = useFormHook(loginValidation.validateLength,{username:'',password:''})
     return(
         <Container>
@@ -57,10 +60,16 @@ const Login =()=>{
                 <Button type="submit">Submit</Button>
             </Form>
             <Signup>
-                Dont have an account? <SignupLink>Signup</SignupLink>
+                Dont have an account? <SignupLink onClick={()=>showSignup()}>Signup</SignupLink>
             </Signup>
         </Container>
     )
 }
 
-export default Login
+const mapDispatchToProps ={
+    showSignup:modalAC.showSignup
+}
+
+const connectedLogin = connect(null,mapDispatchToProps)(Login)
+
+export default connectedLogin
