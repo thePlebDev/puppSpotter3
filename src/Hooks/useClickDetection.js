@@ -20,7 +20,7 @@ const useClickdetection =(node,node2,setState)=>{
         return()=>{
             document.removeEventListener("mousedown",handleClick)
         }
-    },[node,setState])
+    },[node,setState,node2])
 }
 
 

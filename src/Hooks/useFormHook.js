@@ -1,7 +1,7 @@
 import {useState,useEffect} from 'react';
 
-const useFormHook =(validation)=>{
-    const [state,setState] = useState({comment:""})
+const useFormHook =(validation,dataSchema)=>{
+    const [state,setState] = useState(dataSchema)
     const [errors,setErrors] = useState({})
     const [isSubmitting,setIsSubmitting] = useState(false)
 
@@ -15,6 +15,7 @@ const useFormHook =(validation)=>{
     },[isSubmitting,errors])
 
     const handleChange =(e)=>{
+        console.log(state)
         const {name,value} = e.target
         setState({...state,[name]:value})
     }
@@ -22,7 +23,7 @@ const useFormHook =(validation)=>{
     const handleSubmit =(e)=>{
         e.preventDefault();
       
-        setErrors(validation.validateLength(state))
+        setErrors(validation(state))
         setIsSubmitting(true)
     }
 

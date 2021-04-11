@@ -60,7 +60,7 @@ const Navigation =({setState,state,showModal})=>{
     return(
         <Container>
             <IconContainer>
-                <CameraAltIcon style={{fontSize:'30px',color:'4a47a3'}} onClick={()=>{showModal()}}/>
+                <CameraAltIcon style={{fontSize:'30px',color:'4a47a3',cursor:'pointer'}} onClick={()=>{showModal()}}/>
                 <Link to="/">
                     <Title>PupperGram</Title>
                 </Link>

@@ -45,7 +45,7 @@ const Button = styled.button`
 
 
 const ImageContainer =()=>{
-    const {state,handleSubmit,handleChange,errors} = useFormHook(validation)
+    const {state,handleSubmit,handleChange,errors} = useFormHook(validation,{comment:""})
     return(
         <Container>
             <Image alt='doggy' src='https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1334&q=80'/>

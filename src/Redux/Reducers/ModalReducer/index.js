@@ -1,7 +1,8 @@
 import types from '../types'
 
 const initialState= {
-    showModal:false
+    showModal:false,
+    modalContent:types.showLogin
 }
 
 const modalReducer =(state=initialState, action)=>{

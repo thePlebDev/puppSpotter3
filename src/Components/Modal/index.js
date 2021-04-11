@@ -2,7 +2,10 @@ import React,{useRef,useEffect} from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 
+import CloseIcon from '@material-ui/icons/Close';
+
 import modalAc from '../../Redux/ActionCreators/ModalAC'
+import MODAL_STATES from './ModalStates'
 
 const Container = styled.div`
     position:fixed;
@@ -16,44 +19,60 @@ const Container = styled.div`
 `
 const SubContainer = styled.div`
 
-    margin:0 auto;
     background-color:white;
     display:block;
     height:95vh;
     width:90%;
     max-width:600px;
     margin:0 auto;
+    margin-top:25px;
+    border-radius:4px;
+    position:relative;
+`
+
+const IconContainer = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    color:#4a47a3;
+    postion:absolute;
+    
 `
 
 
 
 
-const Modal = ({state,hideModal})=>{
+const Modal = ({state,hideModal,modalContent})=>{
     const node = useRef();
 
-    const  handleClick = e =>{
-        if(node.current.contains(e.target)){
-            return
-        }else{
-            hideModal()
-            return
-        }
-    }
 
     useEffect(()=>{
+        const  handleClick = e =>{
+            if(node.current.contains(e.target)){
+                return
+            }else{
+                hideModal()
+                return
+            }
+        }
         document.addEventListener("mousedown",handleClick);
 
         return()=>{
             document.removeEventListener("mousedown",handleClick)
         }
-    },[])
+    },[node,hideModal])
 
 
 
     return(
         <Container state={state} >
             <SubContainer ref={node}>
-                    <h2>it do be me thos</h2>
+                    <IconContainer>
+                        <CloseIcon style={{fontSize:'40px',cursor:'pointer'}} onClick={()=>{hideModal()}}/>
+                    </IconContainer>
+                    {
+                        MODAL_STATES[modalContent]
+                    }
             </SubContainer>
 
         </Container>
@@ -63,12 +82,13 @@ const Modal = ({state,hideModal})=>{
 const mapStateToProps =(state)=>{
 
     return{
-        state: state.modalReducer.showModal
+        state: state.modalReducer.showModal,
+        modalContent:state.modalReducer.modalContent
     }
 }
 
 const mapDispatchToProps ={
-    hideModal:modalAc.hideModal
+    hideModal:modalAc.hideModal,
 }
 
 
