@@ -52,15 +52,24 @@ const Icon = styled.div`
 
 
 
-const Navigation =({setState,state,showModal})=>{
+const Navigation =({setState,state,showModal,showPost,showLogin})=>{
     const handleClick=()=>{
         setState(!state)
+    }
+
+    const handleModalPost =()=>{
+        showPost()
+        showModal()
+    }
+    const handleModalLogin =()=>{
+        showLogin()
+        showModal()
     }
 
     return(
         <Container>
             <IconContainer>
-                <CameraAltIcon style={{fontSize:'30px',color:'4a47a3',cursor:'pointer'}} onClick={()=>{showModal()}}/>
+                <CameraAltIcon style={{fontSize:'30px',color:'4a47a3',cursor:'pointer'}} onClick={()=>{handleModalPost()}}/>
                 <Link to="/">
                     <Title>PupperGram</Title>
                 </Link>
@@ -71,7 +80,7 @@ const Navigation =({setState,state,showModal})=>{
                     <PetsIcon style={{fontSize:'30px',color:'4a47a3'}} onClick={()=>handleClick()}/>
                 </Icon>
                 
-                    <NavLinks onClick={()=>{showModal()}}>Login</NavLinks>
+                    <NavLinks onClick={()=>{handleModalLogin()}}>Login</NavLinks>
                 
                 <Link to="/profile" >
                     <NavLinks>Profile</NavLinks>
@@ -85,7 +94,9 @@ const Navigation =({setState,state,showModal})=>{
 }
 
 const mapDispatchToProps={
-    showModal:modalAC.showModal
+    showModal:modalAC.showModal,
+    showPost:modalAC.showPost,
+    showLogin:modalAC.showLogin
 }
 
 

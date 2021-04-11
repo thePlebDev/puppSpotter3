@@ -68,6 +68,7 @@ const Login =({showSignup})=>{
 
 const mapDispatchToProps ={
     showSignup:modalAC.showSignup
+    
 }
 
 const connectedLogin = connect(null,mapDispatchToProps)(Login)
