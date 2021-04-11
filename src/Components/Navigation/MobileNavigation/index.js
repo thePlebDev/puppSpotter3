@@ -11,7 +11,7 @@ const Container =styled.div`
     height:100vh;
     width:50vw;
     background-color:#4a47a3;
-    position:absolute;
+    position:fixed;
     transition:all 0.35s;
     left:${({state})=>state ? '0':'-50vw'};
     opacity:0.9;

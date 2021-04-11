@@ -10,6 +10,7 @@ const Input = styled.input`
     padding-right:20px;
 `
 
+
 const TextInput = ({name,handleChange,value})=>{
 
     return(
