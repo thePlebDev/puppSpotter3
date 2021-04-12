@@ -28,6 +28,12 @@ const ModalAC =(()=>{
             return{
                 type:types.showPost
             }
+        },
+        showPicture(src){
+            return{
+                type:types.showPicture,
+                payload:src
+            }
         }
     }
 

@@ -2,7 +2,8 @@ import types from '../types'
 
 const initialState= {
     showModal:false,
-    modalContent:types.showLogin
+    modalContent:types.showLogin,
+    data:""
 }
 
 const modalReducer =(state=initialState, action)=>{
@@ -21,6 +22,9 @@ const modalReducer =(state=initialState, action)=>{
         
         case types.showPost:
             return{...state,modalContent:types.showPost}
+        
+        case types.showPicture:
+            return{...state,modalContent:types.showPicture,data:action.payload}
 
         default:
             return state;

@@ -28,6 +28,7 @@ const SubContainer = styled.div`
     margin-top:25px;
     border-radius:4px;
     position:relative;
+    overflow-y:auto;
 `
 
 const IconContainer = styled.div`

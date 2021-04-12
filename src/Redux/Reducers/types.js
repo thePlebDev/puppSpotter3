@@ -3,7 +3,8 @@ const types ={
     hideModal:"HIDEMODAL",
     showLogin:"LOGIN",
     showSignup:'SIGNUP',
-    showPost:"POST"
+    showPost:"POST",
+    showPicture:"PICTURE"
 }
 
 export default types

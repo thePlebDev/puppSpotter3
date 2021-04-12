@@ -3,12 +3,14 @@
 import Login from '../../Login'
 import Signup from '../../Signup'
 import Post from '../../Post'
+import Picture from '../../Picture';
 
 
 const MODAL_STATES ={
     LOGIN:<Login/>,
     SIGNUP:<Signup/>,
     POST:<Post/>,
+    PICTURE:<Picture/>
 }
 
 
