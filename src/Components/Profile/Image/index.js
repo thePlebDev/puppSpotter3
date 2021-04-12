@@ -1,8 +1,12 @@
 import React,{useState} from 'react'
 import styled from 'styled-components'
+import {connect} from 'react-redux';
 
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
+
+import modalAC from '../../../Redux/ActionCreators/ModalAC'
+
 
 const ImageContainer = styled.div`
     position:relative;
@@ -15,8 +19,6 @@ const ImageItem = styled.img`
     border-radius:4px;
     cursor:pointer;
     transition:all 0.35s;
-
-
 `
 
 const HoverDisplay = styled.div`
@@ -46,14 +48,20 @@ const Title = styled.div`
 
 
 
-const Image =()=>{
+const Image =({src,showModal,showPicture})=>{
     const [state,setState] = useState(false)
+
+    const handleModal =()=>{
+        showModal()
+        showPicture(src)
+    }
+
     return(
-        <ImageContainer state={state}>
+        <ImageContainer state={state} onClick={()=>handleModal()}>
             <ImageItem alt="doggy" state={state}
              onMouseEnter={()=>setState(true)}
              onMouseLeave={()=>setState(false)}
-             src='https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1649&q=80'/>
+             src={src}/>
             <HoverDisplay state={state}>
                 <ItemContainer>
                     <Title>30</Title>
@@ -70,5 +78,12 @@ const Image =()=>{
     )
 }
 
+const mapDispatchToProps ={
+    showModal:modalAC.showModal,
+    showPicture:modalAC.showPicture
+}
 
-export default Image 
+const ConnectedImage = connect(null,mapDispatchToProps)(Image)
+
+
+export default ConnectedImage 

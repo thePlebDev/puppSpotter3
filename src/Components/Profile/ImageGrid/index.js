@@ -16,16 +16,30 @@ const Container = styled.div`
 
 `
 
+const data = [
+    {
+        src:'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1649&q=80',
+        index:0
+    },
+    {
+        src:'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1649&q=80',
+        index:1
+    },
+    {
+        src:'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1649&q=80',
+        index:2
+    },
+
+]
 
 
 
 const ImageGrid =()=>{
     return(
         <Container>
-            <Image/>
-            <Image/>
-            <Image/>
-            <Image/>
+            {data.map((item,index)=>{
+                return<Image src={item.src} key={item.index} />
+            })}
            
         </Container>
     )
