@@ -27,6 +27,8 @@ const App =()=>{
                         <Route path="/profile" component={Profile} exact />
                         <Route path="/map" component={Map} exact />
                         <Route path="/map/:pupId" component={Map} exact />
+
+                        <Route component={Home}/>
                     </Switch>
                 </AnimatePresence>
             </div>
