@@ -10,7 +10,8 @@ import {Link} from 'react-router-dom'
 import Form from '../../Form'
 import useFormHook from '../../../Hooks/useFormHook'
 import TextInput from '../../Form/TextInput'
-import Error from '../../Error/MaterialError'
+import Notification from '../../Notification'
+import Sucess from '../../Notification/Success'
 
 import validation from '../../../Utils/Validation'
 import modalAC from '../../../Redux/ActionCreators/ModalAC'
@@ -59,10 +60,11 @@ const IconContainer = styled.div`
 
 
 
-const ImageContainer =({src,showModal,showPicture,latLong})=>{
+const ImageContainer =({src,showModal,showPicture,latLong,dogName})=>{
     const [showError,setShowError] = useState(false)
     const [liked,setLiked] = useState(false)
-    const {state,handleSubmit,handleChange,errors} = useFormHook(validation.validateLength,{comment:""})
+    const {state,handleSubmit,handleChange,errors,status} = useFormHook(validation.validateLength,{comment:""})
+    console.log(errors)
 
     const handleClick=()=>{
         window.sessionStorage.setItem('lat',latLong[0]);
@@ -77,9 +79,9 @@ const ImageContainer =({src,showModal,showPicture,latLong})=>{
     return(
         <Container>
             <Image alt='doggy' src={src}  onClick={()=>setModal()}/>
-            <Error error={errors.name} showError={showError} setShowError={setShowError}/>
+            <Notification status={status} message={errors.name} show={showError} setShow={setShowError}/>
             <ItemContianer>
-                <Link to="/map/DAVE">
+                <Link to={`/map/${dogName}`}>
                     <RoomIcon style={{fontSize:'30px',cursor:'pointer',color:"#4a47a3"}} onClick={()=>handleClick()}/>
                 </Link>
                 <Form handleSubmit={handleSubmit}>

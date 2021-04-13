@@ -4,13 +4,17 @@ const useFormHook =(validation,dataSchema)=>{
     const [state,setState] = useState(dataSchema)
     const [errors,setErrors] = useState({})
     const [isSubmitting,setIsSubmitting] = useState(false)
+    const [status,setStatus] = useState("fail")
 
 
     useEffect(()=>{
         if(isSubmitting && Object.keys(errors).length === 0){
             console.log('SUBMITTED')
+            setStatus("success")
+            return
         }
         setIsSubmitting(false)
+        setStatus("fail")
 
     },[isSubmitting,errors])
 
@@ -30,6 +34,7 @@ const useFormHook =(validation,dataSchema)=>{
     return{
         state,
         errors,
+        status,
         handleSubmit,
         handleChange
     }

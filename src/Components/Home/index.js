@@ -43,7 +43,7 @@ const Home =()=>{
         <Container initial="out" animate="in" exit="out" variants={pageVariants} transition={pageTransitions} initial={starting}>
             {
                 data.map((item,index)=>{
-                    return <ImageContainer key={item.id} latLong={item.latLong} src={item.src}/>
+                    return <ImageContainer key={item.id} latLong={item.latLong} src={item.src} dogName={item.name}/>
                 })
             }
             

@@ -6,6 +6,8 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import './map.css';
 import { pageTransitions, pageVariants } from '../../Animations/pageAnimations';
 
+import useMapHook from '../../Hooks/useMapHook'
+
 const Container = styled(motion.div)`
     position:absolute;
     width:100%;
@@ -32,14 +34,9 @@ const data = [
 
 
 const MapComponent =({match})=>{
-    //console.log(match.params.pupId)
-    
+ 
+    const {zoomLevel,latData,longData} = useMapHook(match.params.pupId)
 
-    let latData = window.sessionStorage.getItem('lat');
-    let longData = window.sessionStorage.getItem('long');
-    console.log(parseFloat(longData))
-
-    const zoomLevel = 13
     return(
         <Container initial="out" animate="in" exit="out" variants={pageVariants} transition={pageTransitions} initial={starting}>
             <MapContainer center={[parseFloat(latData), parseFloat(longData)]} zoom={zoomLevel} scrollWheelZoom={false}>

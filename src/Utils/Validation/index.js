@@ -9,7 +9,7 @@ const validation =(()=>{
                 return errors
             }
             if(state.comment.length >= 20){
-                errors.name = 'Comment exceded Limit'
+                errors.name = 'Comment exceeds limit'
                 return errors
             }
 
