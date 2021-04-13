@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components'
 import { motion } from 'framer-motion';
+import { connect } from 'react-redux'
+
 import ImageContainer from './ImageContainer'
 import { pageTransitions, pageVariants } from '../../Animations/pageAnimations';
+
 
 const Container = styled(motion.div)`
     width:100%;
@@ -14,22 +17,6 @@ const Container = styled(motion.div)`
 
 `
 
-const data = [
-    {
-        name:"bob",
-        src:'https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1334&q=80',
-        latLong:[43.6532, -79.3832],
-        id:0
-
-    },
-    {
-        name:"timmothy",
-        src:'https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1334&q=80',
-        latLong:[44.6488, -63.5752],
-        id:1
-
-    }
-]
 
 const starting ={
     opacity:0,
@@ -37,7 +24,7 @@ const starting ={
 }
 
 
-const Home =()=>{
+const Home =({data})=>{
 
     return(
         <Container initial="out" animate="in" exit="out" variants={pageVariants} transition={pageTransitions} initial={starting}>
@@ -52,4 +39,12 @@ const Home =()=>{
     )
 }
 
-export default Home
+const mapStateToProps =(state)=>{
+
+    return{
+        data:state.imageReducer.mapData
+    }
+}
+
+const ConnectedHome = connect(mapStateToProps)(Home)
+export default ConnectedHome

@@ -64,7 +64,7 @@ const ImageContainer =({src,showModal,showPicture,latLong,dogName})=>{
     const [showError,setShowError] = useState(false)
     const [liked,setLiked] = useState(false)
     const {state,handleSubmit,handleChange,errors,status} = useFormHook(validation.validateLength,{comment:""})
-    console.log(errors)
+    
 
     const handleClick=()=>{
         window.sessionStorage.setItem('lat',latLong[0]);

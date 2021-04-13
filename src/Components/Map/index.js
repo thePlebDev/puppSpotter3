@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import { motion } from 'framer-motion';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { connect } from 'react-redux';
 
 import './map.css';
 import { pageTransitions, pageVariants } from '../../Animations/pageAnimations';
@@ -33,7 +34,7 @@ const data = [
 ]
 
 
-const MapComponent =({match})=>{
+const MapComponent =({match,data})=>{
  
     const {zoomLevel,latData,longData} = useMapHook(match.params.pupId)
 
@@ -58,4 +59,12 @@ const MapComponent =({match})=>{
     )
 }
 
-export default MapComponent
+const mapStateToProps =(state)=>{
+    return{
+        data:state.imageReducer.mapData
+    }
+}
+
+const ConnectedMapComponents = connect(mapStateToProps)(MapComponent)
+
+export default ConnectedMapComponents
