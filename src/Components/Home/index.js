@@ -18,8 +18,15 @@ const data = [
     {
         name:"bob",
         src:'https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1334&q=80',
-        latLong:[46.0878, -65.7782],
+        latLong:[43.6532, -79.3832],
         id:0
+
+    },
+    {
+        name:"timmothy",
+        src:'https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1334&q=80',
+        latLong:[44.6488, -63.5752],
+        id:1
 
     }
 ]

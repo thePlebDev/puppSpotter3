@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import RoomIcon from '@material-ui/icons/Room';
+import {Link} from 'react-router-dom'
 
 
 import Form from '../../Form'
@@ -58,10 +59,15 @@ const IconContainer = styled.div`
 
 
 
-const ImageContainer =({src,showModal,showPicture})=>{
+const ImageContainer =({src,showModal,showPicture,latLong})=>{
     const [showError,setShowError] = useState(false)
     const [liked,setLiked] = useState(false)
     const {state,handleSubmit,handleChange,errors} = useFormHook(validation.validateLength,{comment:""})
+
+    const handleClick=()=>{
+        window.sessionStorage.setItem('lat',latLong[0]);
+        window.sessionStorage.setItem("long",latLong[1])
+    }
 
     const setModal =()=>{
         showModal()
@@ -73,7 +79,9 @@ const ImageContainer =({src,showModal,showPicture})=>{
             <Image alt='doggy' src={src}  onClick={()=>setModal()}/>
             <Error error={errors.name} showError={showError} setShowError={setShowError}/>
             <ItemContianer>
-                <RoomIcon style={{fontSize:'30px',cursor:'pointer'}}/>
+                <Link to="/map/DAVE">
+                    <RoomIcon style={{fontSize:'30px',cursor:'pointer',color:"#4a47a3"}} onClick={()=>handleClick()}/>
+                </Link>
                 <Form handleSubmit={handleSubmit}>
                     <TextInput name={'comment'} value={state.comment} handleChange={handleChange} />
                     <Button type="submit" onClick={()=>{setShowError(true)}}>Post</Button>

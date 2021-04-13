@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 
 import CloseIcon from '@material-ui/icons/Close';
 
-import modalAc from '../../Redux/ActionCreators/ModalAC'
-import MODAL_STATES from './ModalStates'
+import modalAc from '../../Redux/ActionCreators/ModalAC';
+import MODAL_STATES from './ModalStates';
 
 const Container = styled.div`
     position:fixed;

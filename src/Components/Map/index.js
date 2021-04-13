@@ -19,25 +19,43 @@ const starting ={
      x:"-100vw"
 }
 
+const data = [
+    {
+        latLong:[43.6532, -79.3832],
+        description:"dave to poodle was spotted here"
+    },
+    {
+        latLong:[44.6488, -63.5752],
+        description:"Tim the mut"
+    }
+]
 
-const MapComponent =()=>{
+
+const MapComponent =({match})=>{
+    //console.log(match.params.pupId)
+    
+
+    let latData = window.sessionStorage.getItem('lat');
+    let longData = window.sessionStorage.getItem('long');
+    console.log(parseFloat(longData))
+
+    const zoomLevel = 13
     return(
         <Container initial="out" animate="in" exit="out" variants={pageVariants} transition={pageTransitions} initial={starting}>
-            <MapContainer center={[46.0878, -64.7782]} zoom={7} scrollWheelZoom={false}>
+            <MapContainer center={[parseFloat(latData), parseFloat(longData)]} zoom={zoomLevel} scrollWheelZoom={false}>
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <Marker position={[46.0878, -64.7782]}>
-                    <Popup>
-                        Dave the poodle spotted here
-                    </Popup>
-                </Marker>
-                <Marker position={[46.0878, -65.7782]}>
-                    <Popup>
-                        Tim the bulldog spotted here
-                    </Popup>
-                </Marker>
+                {
+                 data.map((item,index)=>{
+                        return <Marker position={item.latLong} key={index}>
+                            <Popup>
+                                {item.description}
+                            </Popup>
+                        </Marker>
+                    })
+                }
             </MapContainer>
         </Container>
     )
