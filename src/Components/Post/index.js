@@ -2,8 +2,11 @@ import React,{useRef,useState,useEffect} from 'react';
 import styled from 'styled-components'
 
 import usePostHook from '../../Hooks/usePostHook'
+import useImagehook from '../../Hooks/useImageHook'
+
 import LoginTextInput from '../Form/LoginTextInput'
 import Form from '../Form'
+import Notification from '../Notification'
 
 const Container = styled.div`
 
@@ -60,11 +63,13 @@ const ButtonContainer = styled.div`
 
 const Post =()=>{
     const fileInputRef = useRef();
+    const [show,setShow] = useState(false)
 
-    const {preview,handleImageChange,handleClick,newImage,handleSubmit,handleLatLong} = usePostHook(fileInputRef)
-    
+    const {text,handleSubmit,handleLatLong,handleTextChange} = usePostHook(fileInputRef)
+    const {preview,handleImageChange,handleClick,newImage,} = useImagehook(fileInputRef)
     return(
         <Container>
+            <Notification show={show} setShow={setShow} status={"success"}/>
             <Title>Post a Pup</Title> 
             <ImageContainer>
                 {
@@ -81,7 +86,7 @@ const Post =()=>{
                     preview
                        ?
                        <ButtonContainer>
-                           <Button style={{marginRight:"10px"}} type="submit">Upload Image</Button>
+                           <Button style={{marginRight:"10px"}} type="submit" onClick={()=>{setShow(true)}}>Upload Image</Button>
                            <Button onClick={(e)=>newImage(e)}>New Image</Button>
                        </ButtonContainer>
                         :
@@ -91,7 +96,7 @@ const Post =()=>{
                 onChange={(e)=>handleImageChange(e)} accept="image/*"/>
                 
                 <Button onClick={(e)=>handleLatLong(e)}>add location</Button>
-                <LoginTextInput placeholder={"Description"} />
+                <LoginTextInput placeholder={"Description"} handleChange={handleTextChange} name="description" value={text.description}/>
             </Form>
             
         </Container>

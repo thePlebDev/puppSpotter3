@@ -1,46 +1,21 @@
 import {useEffect,useState} from 'react';
 
 const usePostHook =(fileInputRef)=>{
-    const [image,setImage] = useState()
-    const [preview,setPreview] = useState()
+    const [text,setText] = useState({description:""})
     const [location,setLocation] = useState({})
 
-    useEffect(()=>{
-        if(image){
-            const reader = new FileReader();
-            reader.onloadend = ()=>{
-                setPreview(reader.result)
-            }
 
-            reader.readAsDataURL(image)
 
-        }else{
-            setPreview(null)
-        }
+    const handleTextChange=(e)=>{
+        const {name,value} = e.target 
+        setText({...text,[name]:value})
 
-    },[image])
-
-    const handleClick =(e)=>{
-        e.preventDefault()
-        fileInputRef.current.click();
     }
-    const handleImageChange =(e)=>{
-        const file = e.target.files[0]
-        if(file && file.type.substr(0,5) === "image"){
-            setImage(file);
-        }else{
-            setImage(null)
 
-        }
-    }
-    const newImage =(e)=>{
-        e.preventDefault()
-        setImage(null)
-        fileInputRef.current.click();
-    }
     const handleSubmit=(e)=>{
         e.preventDefault();
         console.log(location)
+        console.log(text)
 
     } 
 
@@ -53,19 +28,13 @@ const usePostHook =(fileInputRef)=>{
         }
     }
     const successLocation =(position)=>{
-        //setLocation({lat:position.coords.latitude})
-        // console.log(position.coords.latitude)
-        // console.log(position.coords.longitude)
         setLocation({...location,lat:position.coords.latitude})
         setLocation({...location,long:position.coords.longitude})
     }
 
     return{
-        image,
-        preview,
-        handleClick,
-        newImage,
-        handleImageChange,
+        text,
+        handleTextChange,
         handleSubmit,
         handleLatLong
     }
