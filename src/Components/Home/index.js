@@ -17,7 +17,6 @@ const Container = styled(motion.div)`
 
 `
 
-
 const starting ={
     opacity:0,
      x:"-100vw"
@@ -27,7 +26,7 @@ const starting ={
 const Home =({data})=>{
 
     return(
-        <Container initial="out" animate="in" exit="out" variants={pageVariants} transition={pageTransitions} initial={starting}>
+        <Container initial="out" animate="in" exit="out" variants={pageVariants} transition={pageTransitions} initial={starting} data-testid="image-container">
             {
                 data.map((item,index)=>{
                     return <ImageContainer key={item.id} latLong={item.latLong} src={item.src} dogName={item.name}/>

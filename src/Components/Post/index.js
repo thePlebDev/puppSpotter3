@@ -27,10 +27,10 @@ const Button = styled.button`
     background-color:white;
     color:#4a47a3;
     cursor:pointer;
-    margin-bottom:10px;
     width:20%;
     min-width:150px;
     margin:0 auto;
+    margin-top:10px;
 
 `
 
@@ -50,16 +50,18 @@ const Image = styled.img`
     height:100%;
     width:100%;
 `
+const ButtonContainer = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-
-
-
+`
 
 
 const Post =()=>{
     const fileInputRef = useRef();
 
-    const {preview,handleChange,handleClick,newImage} = usePostHook(fileInputRef)
+    const {preview,handleImageChange,handleClick,newImage,handleSubmit,handleLatLong} = usePostHook(fileInputRef)
     
     return(
         <Container>
@@ -74,21 +76,22 @@ const Post =()=>{
                 }
                 
             </ImageContainer>
-            <Form>
+            <Form handleSubmit={handleSubmit}>
                 {
                     preview
                        ?
-                       <div >
-                           <Button style={{marginRight:"10px"}}>Upload Image</Button>
+                       <ButtonContainer>
+                           <Button style={{marginRight:"10px"}} type="submit">Upload Image</Button>
                            <Button onClick={(e)=>newImage(e)}>New Image</Button>
-                       </div>
+                       </ButtonContainer>
                         :
                     <Button onClick={(e)=>handleClick(e)}>Add Image</Button>
                 }
                 <input type="file"  style={{display:'none'}} ref={fileInputRef}
-                onChange={(e)=>handleChange(e)} accept="image/*"/>
-                <LoginTextInput name="description" />
-                <button>add location</button>
+                onChange={(e)=>handleImageChange(e)} accept="image/*"/>
+                
+                <Button onClick={(e)=>handleLatLong(e)}>add location</Button>
+                <LoginTextInput placeholder={"Description"} />
             </Form>
             
         </Container>

@@ -15,13 +15,13 @@ const Input = styled.input`
     `
 
 
-const LoginTextInput = ({name,handleChange,value,error})=>{
+const LoginTextInput = ({name,handleChange,value,error,placeholder})=>{
         
 
     return(
         <>
         <label htmlFor='login'/>
-        <Input type="text" id='login' state={error}  placeholder="Username" onChange={(e)=>handleChange(e)} name={name} value={value} />
+        <Input type="text" id='login' state={error}  placeholder={placeholder} onChange={(e)=>handleChange(e)} name={name} value={value} />
         </>
     )
 }

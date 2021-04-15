@@ -22,7 +22,8 @@ const AllTheProviders =({ children }) =>{
 }
 
 const customRender = (ui,options)=>{
-    render(ui,{wrapper:AllTheProviders,...options})
+    //the documentation doesn't specify a return statment.However, the function is undefined and not working without it
+    return render(ui,{wrapper:AllTheProviders,...options})
 }
 // the wrapper is what will be wrapped around the ui
 
@@ -30,5 +31,5 @@ const customRender = (ui,options)=>{
 //re-export everything
 export * from "@testing-library/react"
 
-//override render method
+//overrides the render method. Not sure why or how this works but the docs say to do it 
 export { customRender as render }

@@ -78,7 +78,7 @@ const ImageContainer =({src,showModal,showPicture,latLong,dogName})=>{
 
     return(
         <Container>
-            <Image alt='doggy' src={src}  onClick={()=>setModal()}/>
+            <Image alt={`doggy ${dogName}` }src={src}  onClick={()=>setModal()}/>
             <Notification status={status} message={errors.name} show={showError} setShow={setShowError}/>
             <ItemContianer>
                 <Link to={`/map/${dogName}`}>
