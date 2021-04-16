@@ -1,44 +1,36 @@
 import {useEffect,useState} from 'react';
 
-const usePostHook =(fileInputRef)=>{
-    const [text,setText] = useState({description:""})
-    const [location,setLocation] = useState({})
-
-
-
-    const handleTextChange=(e)=>{
-        const {name,value} = e.target 
-        setText({...text,[name]:value})
-
-    }
+const usePostHook =(largeState,validation,errors)=>{
+    
+    const [isSubmitting,setIsSubmitting] = useState();
+    const [status,setStatus] = useState('')
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        console.log(location)
-        console.log(text)
+        console.log(largeState)
+        setIsSubmitting(true);
+        console.log(errors)
 
     } 
 
-    const handleLatLong =(e)=>{
-        e.preventDefault()
-        if(navigator.geolocation){
-            setLocation(navigator.geolocation.getCurrentPosition(successLocation))
-        }else{
-            setLocation("No location")
-        }
-    }
-    const successLocation =(position)=>{
-        setLocation({...location,lat:position.coords.latitude})
-        setLocation({...location,long:position.coords.longitude})
-    }
+    // useEffect(()=>{
+    //     if(isSubmitting && Object.keys(errors).length === 0){
+    //         console.log("submitted")
+    //         setStatus('success')
+    //     }
+    //     setStatus('fail')
+    //     setIsSubmitting(false)
 
-    return{
-        text,
-        handleTextChange,
+    // },[isSubmitting])
+
+    
+    return {
         handleSubmit,
-        handleLatLong
+        status,
     }
 
 }
 
 export default usePostHook
+
+

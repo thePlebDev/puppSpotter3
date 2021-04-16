@@ -3,6 +3,10 @@ import styled from 'styled-components'
 
 import usePostHook from '../../Hooks/usePostHook'
 import useImagehook from '../../Hooks/useImageHook'
+import useLocationHook from '../../Hooks/useLocationHook'
+import useTextHook from '../../Hooks/useTextHook'
+
+import postFormValidation from '../../Utils/Validation/postFormValidation'
 
 import LoginTextInput from '../Form/LoginTextInput'
 import Form from '../Form'
@@ -65,11 +69,25 @@ const Post =()=>{
     const fileInputRef = useRef();
     const [show,setShow] = useState(false)
 
-    const {text,handleSubmit,handleLatLong,handleTextChange} = usePostHook(fileInputRef)
-    const {preview,handleImageChange,handleClick,newImage,} = useImagehook(fileInputRef)
+    // this has potential but it needs to be refactored.
+    // the state is lifted so it can be shared, same with the errors.
+
+    const [largeState,setLargeState] = useState()
+    const [largeErrors,setLargeErrors] = useState({})
+    const {preview,handleImageChange,handleClick,newImage,} = useImagehook(fileInputRef,largeState,setLargeState)
+    const {handleLatLong,location} = useLocationHook(largeState,setLargeState)
+
+    const {text,handleChange} = useTextHook(largeState,setLargeState)
+
+    //actually everyone should do their own validation and then share one global error state
+    const {handleSubmit,status} = usePostHook(largeState,largeErrors)
+
+
+  
+
     return(
         <Container>
-            <Notification show={show} setShow={setShow} status={"success"}/>
+            <Notification show={show} setShow={setShow} status={'fail'} message={"failure to complie"}/>
             <Title>Post a Pup</Title> 
             <ImageContainer>
                 {
@@ -96,7 +114,7 @@ const Post =()=>{
                 onChange={(e)=>handleImageChange(e)} accept="image/*"/>
                 
                 <Button onClick={(e)=>handleLatLong(e)}>add location</Button>
-                <LoginTextInput placeholder={"Description"} handleChange={handleTextChange} name="description" value={text.description}/>
+                <LoginTextInput placeholder={"Description"} handleChange={handleChange}  name="description" value={text.description}/>
             </Form>
             
         </Container>

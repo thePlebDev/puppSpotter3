@@ -1,7 +1,7 @@
 import {useState,useEffect} from 'react'
 
 
-const useImagehook =(fileInputRef)=>{
+const useImagehook =(fileInputRef,largeState,setLargeState)=>{
     const [image,setImage] = useState()
     const [preview,setPreview] = useState()
     useEffect(()=>{
@@ -18,6 +18,12 @@ const useImagehook =(fileInputRef)=>{
         }
 
     },[image])
+
+    useEffect(()=>{
+        if(preview){
+            setLargeState({...largeState,image:preview})
+        }
+    },[preview])
 
     const handleClick =(e)=>{
         e.preventDefault()
