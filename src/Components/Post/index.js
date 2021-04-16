@@ -68,7 +68,7 @@ const ButtonContainer = styled.div`
 const Post =()=>{
     const fileInputRef = useRef();
     const [show,setShow] = useState(false)
-    const [largeErrors,setLargeErrors] = useState({chicken:"none"})
+    const [largeErrors,setLargeErrors] = useState({message:""})
 
     // this has potential but it needs to be refactored.
     // the state is lifted so it can be shared, same with the errors.
@@ -77,7 +77,7 @@ const Post =()=>{
     const {preview,handleImageChange,handleClick,newImage,} = useImagehook(fileInputRef,largeState,setLargeState)
     const {handleLatLong,location} = useLocationHook(largeState,setLargeState)
 
-    const {text,handleChange} = useTextHook(largeState,setLargeState,setLargeErrors,largeErrors,postFormValidation.validate)
+    const {text,handleChange} = useTextHook(largeState,setLargeState,setLargeErrors,postFormValidation.validate)
 
     //actually everyone should do their own validation and then share one global error state
     const {handleSubmit,status} = usePostHook(largeState,largeErrors)
@@ -87,7 +87,7 @@ const Post =()=>{
 
     return(
         <Container>
-            <Notification show={show} setShow={setShow} status={'fail'} message={"failure to complie"}/>
+            <Notification show={show} setShow={setShow} status={status} message={largeErrors.message}/>
             <Title>Post a Pup</Title> 
             <ImageContainer>
                 {
