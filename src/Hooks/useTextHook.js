@@ -1,9 +1,9 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 
 
 
-const useTextHook =(largeState,setLargeState,errors,setErrors,validation)=>{
+const useTextHook =(largeState,setLargeState,setErrors,errors,validation)=>{
     const [text,setText] = useState({description:""})
 
     const handleChange =(e)=>{
@@ -11,9 +11,12 @@ const useTextHook =(largeState,setLargeState,errors,setErrors,validation)=>{
         setText({...text,[name]:value})
         setLargeState({...largeState,...text})
 
-        // //so w
-        // setErrors({...errors,...validation(text)})
     }
+
+    useEffect(()=>{
+        setErrors({...errors,...validation(text)})
+    },[text])
+
 
     return{
         text,
