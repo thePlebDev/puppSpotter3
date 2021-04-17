@@ -1,13 +1,13 @@
 # THE PUP-SPOTTER
-This is my passion project,its not much but its honest work. It will allow users to upload pictures of dogs that are tagged with the geolocation of the user. Logged in users will be able to leave a short comment on other users dog photos. A logged in user will also have a profile page showing the photots that they have posted.There will be a communial map page that all visitors to the site will be able to see all the geolocation of the dogs. This is only the frontend of the app and I am currently building out the api.
+This is my passion project,its not much but its honest work. It will allow users to upload pictures of dogs that are tagged with the geolocation of the user. Logged in users will be able to leave a short comment on other users dog photos. A logged in user will also have a profile page showing the photots that they have posted.There is a communial map page where all visitors to the site are able to see all the geolocations of the dogs. This is only the frontend of the app and I am currently building out the backend in Node.
 
-###Upcomming features
+### Upcomming features
 1) Create the backend and launch the app
 2) Implement a lost dog feature that will allow a user to place a special marker for a lost dog
 3) Add points to the user for each upload
 
 
-###The current state of the app
+### The current state of the app
 
 
 
