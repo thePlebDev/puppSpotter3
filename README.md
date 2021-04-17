@@ -7,8 +7,23 @@ This is my passion project,its not much but its honest work. It will allow users
 3) Add points to the user for each upload
 
 
-### The current state of the app
-![Home](./src/Assets/pupperGramHomePage.png)
+## The current state of the app
+
+## Home page
+![](./src/Assets/pupperGramHomePage.png)
+
+## Map page
+![](./src/Assets/pupperGramMapPage.png)
+
+## Portfolio page
+![](./src/Assets/pupperGramPortfolioPage.png)
+
+## Login Modal
+![](./src/Assets/pupperGramPortfolioPage.png)
+
+## Post Modal
+![](./src/Assets/pupperGramPortfolioPage.png)
+
 
 
 
