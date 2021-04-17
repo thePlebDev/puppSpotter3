@@ -2,9 +2,10 @@
 This is my passion project,its not much but its honest work. It will allow users to upload pictures of dogs that are tagged with the geolocation of the user. Logged in users will be able to leave a short comment on other users dog photos. A logged in user will also have a profile page showing the photots that they have posted.There is a communial map page where all visitors to the site are able to see all the geolocations of the dogs. This is only the frontend of the app and I am currently building out the backend in Node.
 
 ### Upcomming features
-1) Create the backend and launch the app
-2) Implement a lost dog feature that will allow a user to place a special marker for a lost dog
-3) Add points to the user for each upload
+1) get over 70% test coverage on the frontend
+2) Create the backend and launch the app
+3) Implement a lost dog feature that will allow a user to place a special marker for a lost dog
+4) Add points to the user for each upload
 
 
 ## The current state of the app
@@ -19,10 +20,10 @@ This is my passion project,its not much but its honest work. It will allow users
 ![](./src/Assets/pupperGramPortfolioPage.png)
 
 ## Login Modal
-![](./src/Assets/pupperGramPortfolioPage.png)
+![](./src/Assets/pupperGramLogin.png)
 
 ## Post Modal
-![](./src/Assets/pupperGramPortfolioPage.png)
+![](./src/Assets/pupperGramPost.png)
 
 
 
