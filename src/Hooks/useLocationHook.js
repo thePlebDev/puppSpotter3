@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 
-const useLocationHook =(largeState,setLargeState,validate)=>{
+const useLocationHook =(largeState,setLargeState)=>{
     const [location,setLocation] = useState({})
 
     const handleLatLong =(e)=>{
@@ -16,6 +16,8 @@ const useLocationHook =(largeState,setLargeState,validate)=>{
         setLocation({...location,long:position.coords.longitude})
         setLargeState({...largeState,lat:position.coords.latitude,long:position.coords.longitude})
     }
+
+ 
 
 
     return{

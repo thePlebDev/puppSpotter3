@@ -70,21 +70,15 @@ const Post =()=>{
     const [show,setShow] = useState(false)
     const [largeErrors,setLargeErrors] = useState({})
     const [largeState,setLargeState] = useState()
-
-    // 1) make sure both the errors get set
-    //2) make sure they get updated accordingly 
-    //3) refactor somehow 
     
 
     const {preview,handleImageChange,handleClick,newImage,} = useImagehook(fileInputRef,largeState,setLargeState)
 
+
     const {handleLatLong,location} = useLocationHook(largeState,setLargeState)
 
-    //GETTING THE ERRORS TO WORK
-    const {text,handleChange} = useTextHook(largeState,setLargeState,largeErrors,setLargeErrors,postFormValidation.validate)
-
-    //making sure the errors make it
-    const {handleSubmit,status,message} = usePostHook(largeState,largeErrors)
+    const {text,handleChange} = useTextHook(largeState,setLargeState)
+    const {handleSubmit,status,message} = usePostHook(largeState)
 
 
   

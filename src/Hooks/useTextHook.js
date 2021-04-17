@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react';
 
 
 
-const useTextHook =(largeState,setLargeState,largeErrors,setLargeErrors,validation)=>{
+const useTextHook =(largeState,setLargeState)=>{
     const [text,setText] = useState({description:""})
 
     const handleChange =(e)=>{
@@ -12,9 +12,6 @@ const useTextHook =(largeState,setLargeState,largeErrors,setLargeErrors,validati
         setLargeState({...largeState,...text})
 
     }
-    useEffect(()=>{
-        setLargeErrors({...validation(text)})
-    },[text])
 
 
     return{

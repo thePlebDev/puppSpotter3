@@ -10,23 +10,6 @@ const usePostHook =(largeState,errors)=>{
         setIsSubmitting(true);
     } 
 
-    useEffect(()=>{
-        console.log(errors)
-    },[errors])
-
-
-
-
-    // useEffect(()=>{
-    //     if(isSubmitting && Object.keys(errors).length === 0){
-    //         console.log("submitted")
-    //         setStatus('success')
-    //         return
-    //     }
-    //     setStatus('fail')
-    //     setIsSubmitting(false)
-
-    // },[isSubmitting])
 
     
     return {
