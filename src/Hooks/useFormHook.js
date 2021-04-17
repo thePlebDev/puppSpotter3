@@ -9,7 +9,7 @@ const useFormHook =(validation,dataSchema)=>{
 
     useEffect(()=>{
         if(isSubmitting && Object.keys(errors).length === 0){
-            console.log('SUBMITTED')
+           // console.log('SUBMITTED')
             setStatus("success")
             return
         }

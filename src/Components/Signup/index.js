@@ -52,7 +52,6 @@ const SignupLink = styled.span`
 
 
 const Signup =({showLogin})=>{
-    console.log(showLogin)
     const {state,errors,handleSubmit,handleChange} = useFormHook(loginValidation.validateLength,{username:'',password:''})
     return(
         <Container>
