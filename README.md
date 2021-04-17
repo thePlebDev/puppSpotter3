@@ -1,4 +1,4 @@
-# THE PUP-SPOTTER
+# THE PupperGram
 This is my passion project,its not much but its honest work. It will allow users to upload pictures of dogs that are tagged with the geolocation of the user. Logged in users will be able to leave a short comment on other users dog photos. A logged in user will also have a profile page showing the photots that they have posted.There is a communial map page where all visitors to the site are able to see all the geolocations of the dogs. This is only the frontend of the app and I am currently building out the backend in Node.
 
 ### Upcomming features
@@ -8,6 +8,8 @@ This is my passion project,its not much but its honest work. It will allow users
 
 
 ### The current state of the app
+![Home](./src/Assets/pupperGramHomePage.png)
+
 
 
 
